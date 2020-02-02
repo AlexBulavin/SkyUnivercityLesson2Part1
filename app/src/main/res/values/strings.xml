@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Sky Univercity Lesson2 Part1</string>
+    <string name="app_name">Sky University Lesson2 Part1</string>
     <string name="user_name_here">User Name Here</string>
     <string name="yellow_star">Yellow Star</string>
     <string name="recipe_text"><![CDATA[<h2>Название рецепта</h2>
-Now it’s your turn to complete this exercise.
+Now it is your turn to complete this exercise.
 Add a ScrollView with a TextView showing information about yourself to the layout.
 Style the TextView with NameStyle, and add additional styling to separate the scrollable text from the edges of the screen.
 Add some spacing between the lines using the lineSpacingMultiplier property to the TextView.
@@ -19,34 +19,38 @@ SKELETON code of view hierarchy:
 It is time to use the Worker you defined in the last exercise.
 You will do this exercise it in two parts. In the first part, you ll add code to the DevByteApplication class to schedule your RefreshDataWork to run once a day. Then, in the second part, youll define constraints to prevent running work when there\'s no network or the device is low on battery.
 1. Create a coroutine scope to use for your application:
-Open DevByteApplication. Add a coroutine scope variable, applicationScope, which uses Dispatchers.Default:
-val applicationScope = CoroutineScope(Dispatchers.Default)
-2. Create an initialization function that does not block the main thread:
-It's important to note that WorkManager.initialize should be called from inside onCreate without using a background thread to avoid issues caused when initialization happens after WorkManager is used.
-Create the function delayedInit() that uses the applicationScope you defined above. It should call a function (which you haven't created yet) called setupRecurringWork().
-private fun delayedInit() = applicationScope.launch {
-    setupRecurringWork()
-}
-3. Add a call to delayedInit() in onCreate().
-4. Make a PeriodWorkRequest:
-Create a setupRecurringWork() function. In it, define a repeatingRequest variable that uses a PeriodicWorkRequestBuilder to create a PeriodicWorkRequest for your RefreshDataWorker. It should run once every day.
-private fun setupRecurringWork() {
-    val repeatingRequest = PeriodicWorkRequestBuilder<RefreshDataWorker>(1, TimeUnit.DAYS)
-        .build()
-}
-5. Schedule the work as unique:
-Get an instance of WorkManager and call enqueueUniquePeriodicWork to schedule the work.
-WorkManager.getInstance().enqueueUniquePeriodicWork(
-                RefreshDataWorker.WORK_NAME,
-                ExistingPeriodicWorkPolicy.KEEP,
-                repeatingRequest)
-6. Create a unique identifier for your work:
-In RefreshDataWorker.kt, create a companion object and define a work name that can be used to uniquely identify this worker.
-companion object {
-   const val WORK_NAME = "RefreshDataWorker"
-}
-7. Build and run your app to make sure everything's on track.
-So far so good! You've created a work request, but now you have to tell WorkManager under what conditions to run the work. The next video will show you how to create constraints so work will run only when you want it to. 
+Now it is your turn to complete this exercise.
+Add a ScrollView with a TextView showing information about yourself to the layout.
+Style the TextView with NameStyle, and add additional styling to separate the scrollable text from the edges of the screen.
+Add some spacing between the lines using the lineSpacingMultiplier property to the TextView.
+<h2>Experiment</h2> with adding an ImageView above the TextView inside the ScrollView. When you run the app, this image, unlike the star, will scroll out of view as the text scrolls up.
+Hint: You will need to wrap the two scrollable views into a LinearLayout inside the ScrollView. ScrollView > LinerLayout > ImageView + TextView
+Below is a skeleton code version for this challenge.
+The important thing to remember is that since ScrollView can only have one child, you have to wrap that ImageView and the TextView into a LinearLayout.
+There is no solution code provided for this challenge, but the skeleton code below gives you the expected view hierarchy to use.
+SKELETON code of view hierarchy:
+<br />Check the steps
+<br />below as you implement
+<br />them to complete this exercise.
+It is time to use the Worker you defined in the last exercise.
+You will do this exercise it in two parts. In the first part, you ll add code to the DevByteApplication class to schedule your RefreshDataWork to run once a day. Then, in the second part, youll define constraints to prevent running work when there\'s no network or the device is low on battery.
+1. Create a coroutine scope to use for your application:
+Now it is your turn to complete this exercise.
+Add a ScrollView with a TextView showing information about yourself to the layout.
+Style the TextView with NameStyle, and add additional styling to separate the scrollable text from the edges of the screen.
+Add some spacing between the lines using the lineSpacingMultiplier property to the TextView.
+<h2>Experiment</h2> with adding an ImageView above the TextView inside the ScrollView. When you run the app, this image, unlike the star, will scroll out of view as the text scrolls up.
+Hint: You will need to wrap the two scrollable views into a LinearLayout inside the ScrollView. ScrollView > LinerLayout > ImageView + TextView
+Below is a skeleton code version for this challenge.
+The important thing to remember is that since ScrollView can only have one child, you have to wrap that ImageView and the TextView into a LinearLayout.
+There is no solution code provided for this challenge, but the skeleton code below gives you the expected view hierarchy to use.
+SKELETON code of view hierarchy:
+<br />Check the steps
+<br />below as you implement
+<br />them to complete this exercise.
+It is time to use the Worker you defined in the last exercise.
+You will do this exercise it in two parts. In the first part, you ll add code to the DevByteApplication class to schedule your RefreshDataWork to run once a day. Then, in the second part, youll define constraints to prevent running work when there\'s no network or the device is low on battery.
+1. Create a coroutine scope to use for your application:
 ]]>
     </string>
 

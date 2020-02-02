@@ -1,4 +1,4 @@
-package com.example.skyunivercitylesson2part1
+package com.example.skyuniversitylesson2part1
 
 import org.junit.Test
 

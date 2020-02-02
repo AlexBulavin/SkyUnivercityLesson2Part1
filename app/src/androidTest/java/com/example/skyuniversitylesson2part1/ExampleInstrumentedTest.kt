@@ -1,4 +1,4 @@
-package com.example.skyunivercitylesson2part1
+package com.example.skyuniversitylesson2part1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
