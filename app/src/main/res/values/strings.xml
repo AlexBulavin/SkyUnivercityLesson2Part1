@@ -53,5 +53,7 @@ You will do this exercise it in two parts. In the first part, you ll add code to
 1. Create a coroutine scope to use for your application:
 ]]>
     </string>
+    <string name="recipe_notes_hint">Write some notes here</string>
+    <string name="recipe_notes_content_description">Write some notes here for the recipe</string>
 
 </resources>
