@@ -32,7 +32,13 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.done_button).setOnClickListener{addRecipeNotes(it)}
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 //        binding.userName = userName
+         val editText = findViewById<EditText>(R.id.racipe_notes)
+         val recipeNoteTextView = findViewById<TextView>(R.id.note_complete_text)
+         val recipeText = findViewById<TextView>(R.id.recipe_text)
+         val recipeTextSource = getString(R.string.recipe_text)
+        findViewById<EditText>(R.id.racipe_notes).setOnEditorActionListener{editText
 
+        }
 
         //findViewById<Button>(R.id.done_button).setOnClickListener {
         //    addNickname(it)

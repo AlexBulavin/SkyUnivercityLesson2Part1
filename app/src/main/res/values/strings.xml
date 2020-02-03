@@ -55,5 +55,6 @@ You will do this exercise it in two parts. In the first part, you ll add code to
     </string>
     <string name="recipe_notes_hint">Write some notes here</string>
     <string name="recipe_notes_content_description">Write some notes here for the recipe</string>
+    <string name="done">Done</string>
 
 </resources>
