@@ -17,14 +17,6 @@
             android:text="@string/user_name_here"
             android:textAlignment="center"/>
 
-        <ImageView
-            android:id="@+id/star_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:contentDescription="@string/yellow_star"
-            app:srcCompat="@drawable/device_350x600" />
-
         <ScrollView
             android:id="@+id/bio_scroll"
             android:layout_width="match_parent"
@@ -35,6 +27,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/star_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:contentDescription="@string/yellow_star"
+                    app:srcCompat="@drawable/device_350x600" />
                 <TextView
                     android:id="@+id/recipe_text"
                     android:layout_width="match_parent"
@@ -43,7 +42,7 @@
                     android:paddingStart="@dimen/padding"
                     android:paddingEnd="@dimen/padding"
                     android:paddingTop="@dimen/padding"
-                    android:text="" />
+                    />
 
                 <TextView
                     android:id="@+id/note_complete_text"
@@ -66,4 +65,4 @@
             </LinearLayout>
 
         </ScrollView>
-    </LinearLayout>
+</LinearLayout>
