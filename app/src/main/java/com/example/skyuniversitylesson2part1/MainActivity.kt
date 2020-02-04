@@ -18,15 +18,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         val recipeText = findViewById<TextView>(R.id.recipe_text)
+         val recipeText = findViewById<TextView>(R.id.recipe_text)//Передал из string текст рецепта во view
          recipeText.setText(Html.fromHtml(getString(R.string.recipe_text)))
+         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+         val editText = findViewById<EditText>(R.id.recipe_notes)
+         val recipeNoteTextView = findViewById<TextView>(R.id.note_complete_text)
 
         findViewById<EditText>(R.id.recipe_notes).setOnKeyListener({_, keyCode, _ ->
             //Добавил обработчик нажатия экранной клавиатуры
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                //при нажатии экранного  ENTER вызывается addNoteToRecipe
-                addNoteToRecipe(recipe_notes)
-                //Действие привязано к объекту nickname_edit
+                //при нажатии экранного  ENTER переприсваиваем редактируемый текст нередактируемому
+                //и скрываем клавиатуру
+                recipeNoteTextView.text = editText.text//нередактируемый текст = редактируемый текст
+                editText.visibility = View.GONE//скрыли редактируемый текст
+                recipeNoteTextView.visibility = View.VISIBLE//показали нередактируемый текст
+                //Скрываем клавиатуру
+                imm.hideSoftInputFromWindow(recipe_notes.windowToken, 0)
                 return@setOnKeyListener true
             }
             return@setOnKeyListener false
@@ -34,38 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         //Связываем setOnClickListener() с findViewById<TextView> и функцией вызова клавиатуры с передачей возможности редактировать пользовательский текст
          findViewById<TextView>(R.id.note_complete_text).setOnClickListener({
-
-             changeRecipeNote(note_complete_text)
+             //Отображаем клавиатуру
+             imm.toggleSoftInputFromWindow(recipe_notes.windowToken, InputMethodManager.SHOW_IMPLICIT, 0)
+             //Делаем редактируемый текст видимым, а не редактируемый - невидимым
+             editText.visibility = View.VISIBLE //показали редактируемый текст
+             recipeNoteTextView.visibility = View.GONE//скрыли нередактируемый текст
          })
      }
-
-        private fun addNoteToRecipe(view: View){
-            val editText = findViewById<EditText>(R.id.recipe_notes)
-            val recipeNoteTextView = findViewById<TextView>(R.id.note_complete_text)
-
-                recipeNoteTextView.text = editText.text//.toString()
-                editText.visibility = View.GONE
-                view.visibility = View.GONE
-                recipeNoteTextView.visibility = View.VISIBLE
-
-            // Hide the keyboard.
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-
-        private fun changeRecipeNote(view: View){
-            val editText = findViewById<EditText>(R.id.recipe_notes)
-            val recipeNoteTextView = findViewById<TextView>(R.id.note_complete_text)
-
-            editText.text = recipeNoteTextView.editableText //.toString()
-
-            //recipeText.setText(Html.fromHtml(getString(R.string.recipe_text)))
-            editText.visibility = View.VISIBLE
-            view.visibility = View.VISIBLE
-            recipeNoteTextView.visibility = View.GONE
-
-            // Hide the keyboard.
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
 }
